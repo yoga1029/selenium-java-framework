@@ -9,6 +9,13 @@ public class InventoryPage {
 
     private By productsTitle =
             By.xpath("//span[text()='Products']");
+    
+    private By addBackpackButton =
+            By.id("add-to-cart-sauce-labs-backpack");
+    
+    private By removeBackpackButton =
+            By.id("remove-sauce-labs-backpack");
+
 
     public InventoryPage(WebDriver driver) {
         this.driver = driver;
@@ -17,6 +24,18 @@ public class InventoryPage {
     public boolean isProductsDisplayed() {
 
         return driver.findElement(productsTitle)
+                     .isDisplayed();
+    }
+    
+    public void addBackpackToCart() {
+
+        driver.findElement(addBackpackButton)
+              .click();
+    }
+    
+    public boolean isRemoveButtonDisplayed() {
+
+        return driver.findElement(removeBackpackButton)
                      .isDisplayed();
     }
 }
