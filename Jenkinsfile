@@ -13,5 +13,18 @@ pipeline {
             }
         }
 
+        stage('Publish Extent Report') {
+            steps {
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'Reports',
+                    reportFiles: 'ExtentReport.html',
+                    reportName: 'Extent Report'
+                ])
+            }
+        }
+
     }
 }

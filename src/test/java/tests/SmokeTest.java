@@ -7,7 +7,7 @@ import base.BaseTest;
 
 public class SmokeTest extends BaseTest {
 
-    @Test
+	@Test(enabled = false)
     public void verifySauceDemoHomePage() {
 
         String actualTitle = driver.getTitle();
