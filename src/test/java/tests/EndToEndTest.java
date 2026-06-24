@@ -22,31 +22,39 @@ public class EndToEndTest extends BaseTest
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user", "secret_sauce");
         System.out.println(" [INFO] Login successful");
+        test.pass("Login successful");
         
         //Move to Inventory Page
         InventoryPage inventoryPage = new InventoryPage(driver);
         Assert.assertTrue(inventoryPage.isProductsDisplayed(), "Inventory Page is not displayed");
         System.out.println("[INFO] Inventory page displayed");
+        test.pass("Inventory page displayed");
 
         
         //Add Product to Cart
         inventoryPage.addBackpackToCart();
         System.out.println(" [INFO] Backpack added to cart");
+        test.pass("Backpack added to cart");
+
 
         //Assert that remove button is displayed
         Assert.assertTrue(inventoryPage.isRemoveButtonDisplayed(), "Product was not added to the Cart");
         System.out.println("[INFO] Remove button displayed");
-        
+
         //Cart Page
         CartPage cartPage = new CartPage(driver);
 
         cartPage.openCart();
 
         System.out.println("[INFO] Cart page opened");
+        test.pass("Cart page opened");
+
 
         cartPage.clickCheckout();
 
         System.out.println("[INFO] Checkout clicked");
+        test.pass("Checkout clicked");
+
         
         //Checkout Page
         CheckoutPage checkoutPage =
@@ -58,6 +66,8 @@ public class EndToEndTest extends BaseTest
                 "600001");
 
         System.out.println("[INFO] Checkout details entered");
+        test.pass("Checkout details entered");
+
         
         //Overview Page 
         OverviewPage overviewPage =
@@ -66,6 +76,8 @@ public class EndToEndTest extends BaseTest
         overviewPage.clickFinish();
 
         System.out.println("[INFO] Finish button clicked");
+        test.pass("Finish button clicked");
+
         
         //Complete Order Page
         CompleteOrderPage completeOrderPage =
@@ -76,5 +88,6 @@ public class EndToEndTest extends BaseTest
                 "Order was not completed");
 
         System.out.println("[INFO] Order completed successfully");
+        test.pass("Order completed successfully");
     }
 }
