@@ -12,19 +12,20 @@ pipeline {
                 sh 'mvn clean test'
             }
         }
-
-        stage('Publish Extent Report') {
-            steps {
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true,
-                    reportDir: 'Reports',
-                    reportFiles: 'ExtentReport.html',
-                    reportName: 'Extent Report'
-                ])
-            }
-        }
+		post {
+		    always {
+		        publishHTML([
+		            allowMissing: true,
+		            alwaysLinkToLastBuild: true,
+		            keepAll: true,
+		            reportDir: 'Reports',
+		            reportFiles: 'ExtentReport.html',
+		            reportName: 'Extent Report'
+		        ])
+		    }
+		}
+       
 
     }
 }
+
